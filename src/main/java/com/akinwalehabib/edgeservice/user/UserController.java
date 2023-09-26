@@ -1,6 +1,6 @@
 package com.akinwalehabib.edgeservice.user;
 
-import java.util.List;
+// import java.util.List;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
@@ -14,26 +14,12 @@ public class UserController {
   
   @GetMapping("user")
   public Mono<User> getUser(@AuthenticationPrincipal OidcUser oidcUser) {
-    /*
-      return ReactiveSecurityContextHolder.getContext()
-        .map(SecurityContext::getAuthentication)
-        .map(authentication -> (OidcUser) authentication.getPrincipal())
-        .map(oidcUser -> 
-          new User(
-            oidcUser.getPreferredUsername(),
-            oidcUser.getGivenName(),
-            oidcUser.getFamilyName(),
-            List.of("employee", "customer")
-          )
-        );
-      }
-     */
-
     var user = new User(
       oidcUser.getPreferredUsername(),
       oidcUser.getGivenName(),
       oidcUser.getFamilyName(),
-      List.of("employee", "customer")
+      // List.of("employee", "customer")
+      oidcUser.getClaimAsStringList("roles")
     );
     return Mono.just(user);
   }
