@@ -51,14 +51,12 @@ dependencyManagement {
 	}
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
+springBoot {
+	buildInfo()
 }
 
-bootRun {
-	if (project.hasProperty('args')) {
-		args project.args.split(',')
-	}
+tasks.named('test') {
+	useJUnitPlatform()
 }
 
 bootBuildImage {

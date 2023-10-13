@@ -1,4 +1,4 @@
-package com.akinwalehabib.edgeservice;
+package com.akinwalehabib.edgeservice.user;
 
 
 import java.util.List;
