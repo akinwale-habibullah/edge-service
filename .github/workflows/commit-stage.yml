@@ -43,6 +43,7 @@ jobs:
         with:
           kubectl: latest
           kubeval: latest
+          kustomize: latest
       - name: Validate Kubernetes manifests
         run: |
             kustomize build k8s | kubeval --strict -
